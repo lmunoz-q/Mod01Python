@@ -21,24 +21,24 @@ class Book:
 		except TypeError as err:
 			sys.exit(err)
 
-		def get_recipe_by_name(self, name):
-			"""Prints a recipe with the name \texttt{name} and returns the instance"""
-			for value in self.recipe_list.values():
-				if value == name:
-					print(f"{value}")
+	def get_recipe_by_name(self, name):
+		"""Prints a recipe with the name \texttt{name} and returns the instance"""
+		for value in self.recipe_list.values():
+			if value == name:
+				print(f"{value}")
 
-		def get_recipes_by_types(self, recipe_type):
-			"""Get all recipe names for a given recipe_type"""
-			for key in self.recipe_list.keys():
-				if key == recipe_type:
-					print(f"{key}")
+	def get_recipes_by_types(self, recipe_type):
+		"""Get all recipe names for a given recipe_type"""
+		for key in self.recipe_list.keys():
+			if key == recipe_type:
+				print(f"{key}")
 
-		def add_recipe(self, recipe):
-			"""Add a recipe to the book and update last_update"""
-			if isinstance(recipe, Recipe):
-				print("'recipe' don't need to be a 'Recipe' type")
-			self.recipe_list.update(recipe)
-			"""update time here"""
+	def add_recipe(self, recipe):
+		"""Add a recipe to the book and update last_update"""
+		if isinstance(recipe, Recipe):
+			print("'recipe' don't need to be a 'Recipe' type")
+		self.recipe_list.update(recipe)
+		"""update time here"""
 
 	def __str__(self):
 		return f"The book is named '{self.name}'\nUpdated time {self.last_update}\nCreation time {self.creation_date}, The recipes are : {self.recipe_list}"
