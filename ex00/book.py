@@ -1,6 +1,6 @@
 import datetime
 import sys
-from ex00.recipe import Recipe
+from recipe import Recipe
 
 
 class Book:
@@ -34,3 +34,5 @@ class Book:
 			if not isinstance(recipe, Recipe):
 				print("recipe is not a Recipe type")
 
+	def __str__(self):
+		return f"The book is named '{self.name}'\nUpdated time {self.last_update}\nCreation time {self.creation_date}, The recipes are : {self.recipe_list}"
