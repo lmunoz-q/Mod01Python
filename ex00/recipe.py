@@ -27,6 +27,8 @@ class Recipe:
 
 	def __str__(self):
 		"""Return the string to print with the recipe info"""
-		txt = f"The recipe is called {self.name}\nIn a scale of difficulty from 1 to 5 it's a {self.cooking_lvl}\nIt takes {self.cooking_time} minutes to cook\nthe ingredients from this recipe are : {self.ingredients}\nDescription : {self.description}\nWe can eat this recipe for {self.recipe_type}"
+		if self.description is not "":
+			txt = f"This is the recipe for '{self.name}'\nCooking lvl : {self.cooking_lvl}/5\nCooking time : {self.cooking_time} minutes\nIngredients : {self.ingredients}\nDescription : {self.description}\nThis recipe is for {self.recipe_type}"
+		else:
+			txt = f"This is the recipe for '{self.name}'\nCooking lvl : {self.cooking_lvl}/5\nCooking time : {self.cooking_time} minutes\nIngredients : {self.ingredients}\nThis recipe is for {self.recipe_type}"
 		return txt
-
