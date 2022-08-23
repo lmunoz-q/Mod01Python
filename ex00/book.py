@@ -35,7 +35,7 @@ class Book:
 
 		def add_recipe(self, recipe):
 			"""Add a recipe to the book and update last_update"""
-			if isinstance(recipe, Recipe):
+			if not isinstance(recipe, Recipe):
 				print("'recipe' don't need to be a 'Recipe' type")
 			self.recipe_list.update(recipe)
 			"""update time here"""
