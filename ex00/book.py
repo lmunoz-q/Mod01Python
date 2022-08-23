@@ -43,4 +43,5 @@ class Book:
         """update time here"""
 
     def __str__(self):
-        return f"The book is named '{self.name}'\nUpdated time {self.last_update}\nCreation time {self.creation_date}, The recipes are : {self.recipe_list}"
+        return f"The book is named '{self.name}'\nUpdated time {self.last_update}\nCreation time {self.creation_date}, The recipes are :{self.recipe_list}"
+
