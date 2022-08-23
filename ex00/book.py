@@ -17,7 +17,9 @@ class Book:
             self.creation_date = creation_date
             if not all(key in ["starter", "lunch", "dessert"] for key in recipe_list.keys()):
                 raise TypeError("error, the dictionary not contain ['starter', 'lunch', dessert] as a key value")
-            self.recipe_list = dict(recipe_list)
+            elif not all(isinstance(value, Recipe) for value in recipe_list.values()):
+                raise TypeError("error, the dictionary not contain 'values' as a 'Recipe' type")
+            self.recipe_list = recipe_list
         except TypeError as err:
             sys.exit(err)
 
@@ -36,7 +38,7 @@ class Book:
     def add_recipe(self, recipe):
         """Add a recipe to the book and update last_update"""
         if not isinstance(recipe, Recipe):
-            print("'recipe' don't need to be a 'Recipe' type")
+            print("'recipe' need to be a 'Recipe' type")
         self.recipe_list.update(recipe)
         """update time here"""
 
