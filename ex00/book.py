@@ -28,7 +28,7 @@ class Book:
         try:
             if not isinstance(name, str):
                 raise TypeError("error, 'name' must be a <string>")
-            for value in self.recipe_list.value():
+            for value in self.recipe_list.values():
                 if value.name == name:
                     print(f"{name}")
                     return value
@@ -47,10 +47,7 @@ class Book:
                 raise TypeError("error, recipe_type must be a 'starter', 'lunch' or 'dessert'")
             for key in self.recipe_list.keys():
                 if key == recipe_type:
-                    x = []
-                    for value in self.recipe_list[key]:
-                        x += value.name
-                    return x
+                    return self.recipe_list[recipe_type].name
         except TypeError as te:
             sys.exit(te)
 
@@ -59,7 +56,7 @@ class Book:
         try:
             if not isinstance(recipe, Recipe):
                 raise TypeError("'recipe' need to be a <Recipe> type")
-            self.recipe_list.update(recipe)
+            self.recipe_list.update({recipe.recipe_type: recipe})
             self.last_update = datetime.datetime.now()
         except TypeError as te:
             sys.exit(te)

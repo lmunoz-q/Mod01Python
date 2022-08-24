@@ -13,7 +13,8 @@ class Recipe:
 			if not isinstance(cooking_time, int) or cooking_time < 0:
 				raise TypeError("error, cooking_time must be a positive integer")
 			self.cooking_time = cooking_time
-			if not isinstance(ingredients, list) or not all(ingredients) or not all(isinstance(elem, str) for elem in ingredients) or not ingredients:
+			if not isinstance(ingredients, list) or not all(ingredients) or not all(
+					isinstance(elem, str) for elem in ingredients) or not ingredients:
 				raise TypeError("error, ingredients must be a non empty list containing strings")
 			self.ingredients = ingredients
 			if not isinstance(description, str):
@@ -27,8 +28,9 @@ class Recipe:
 
 	def __str__(self):
 		"""Return the string to print with the recipe info"""
-		if self.description is not "":
+		if self.description != "":
 			txt = f"This is the recipe for '{self.name}'\nCooking lvl : {self.cooking_lvl}/5\nCooking time : {self.cooking_time} minutes\nIngredients : {self.ingredients}\nDescription : {self.description}\nThis recipe is for {self.recipe_type}"
 		else:
 			txt = f"This is the recipe for '{self.name}'\nCooking lvl : {self.cooking_lvl}/5\nCooking time : {self.cooking_time} minutes\nIngredients : {self.ingredients}\nThis recipe is for {self.recipe_type}"
 		return txt
+# __repr__ si on veut afficher l'objet dans book.py
