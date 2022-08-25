@@ -10,11 +10,10 @@ class Recipe:
 			if not isinstance(cooking_lvl, int) or not 0 < cooking_lvl < 6:
 				raise TypeError("error, cooking_lvl must be an integer between 1 and 5")
 			self.cooking_lvl = cooking_lvl
-			if not isinstance(cooking_time, int) or cooking_time < 0:
+			if not isinstance(cooking_time, int) or cooking_time <= 0:
 				raise TypeError("error, cooking_time must be a positive integer")
 			self.cooking_time = cooking_time
-			if not isinstance(ingredients, list) or not all(ingredients) or not all(
-					isinstance(elem, str) for elem in ingredients) or not ingredients:
+			if not isinstance(ingredients, list) or not all(ingredients) or not all(isinstance(elem, str) for elem in ingredients) or not ingredients:
 				raise TypeError("error, ingredients must be a non empty list containing strings")
 			self.ingredients = ingredients
 			if not isinstance(description, str):
