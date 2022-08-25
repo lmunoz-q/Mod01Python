@@ -11,7 +11,6 @@ class Test(unittest.TestCase):
 		self.recette2 = Recipe("bolognaise", 4, 200, ["meat", "onions", "celery", "carrots", "tomatoes"], "meat sauce", "lunch")
 		self.recette3 = Recipe("tiramisu", 5, 30, ["coffee", "mascarpone", "sugar", "egg"], "italian dessert", "dessert")
 		self.recette4 = Recipe("carbonara", 2, 10, ["pancetta", "egg", "pecorino", "pepper"], "creamy sauce", "lunch")
-		self.recetteToAdd = Recipe("panna cotta", 2, 20, ["milk", "gelatin", "sugar", "fruit"], "", "dessert")
 		"""Setup Dictionary for <Book>"""
 		self.listOfRecipes = {
 			"starter": [self.recette1],
@@ -49,7 +48,6 @@ class Test(unittest.TestCase):
 		self.assertIsInstance(self.recette2, Recipe)
 		self.assertIsInstance(self.recette3, Recipe)
 		self.assertIsInstance(self.recette4, Recipe)
-		self.assertIsInstance(self.recetteToAdd, Recipe)
 		self.assertIsInstance(self.italianBook, Book)
 
 	def testWrongRecipeName(self):
@@ -262,32 +260,78 @@ class Test(unittest.TestCase):
 		with self.assertRaises(SystemExit):
 			test13 = Book("Recipes from Italia", datetime.datetime.now(), datetime.datetime.now(), self.badValuesOfRecipes)
 
-
-		"""self.simpleInt = 5
-		self.negativeSimpleInt = -5
-		self.intOutOfRange = 4242
-		self.negativeIntOutOfRange = -4242
-		self.emptyString = ""
-		self.nonEmptyString = "caca"
-		self.noParameter = None
-		self.falseTest = False
-		self.trueTest = True
-		self.emptyList = []
-		self.listBadWords = ["caca", "vomi", "crachat"]
-			def testWrong(self):
-		Test assigning incorrect type in Book.
+	def testWrongGetRecipeByName(self):
+		"""Test trying to use not correctly the method get_recipe_by_name in Book"""
 		with self.assertRaises(SystemExit):
-			test = Book("Recipes from Italia", datetime.datetime.now(), datetime.datetime.now(), self.listOfRecipes)
-		self.badKeysOfRecipes = {
-			"caca": [self.recette1],
-			"vomi": [self.recette2, self.recette4],
-			"crachat": [self.recette3]
-		}
-		self.badValuesOfRecipes = {
-			"starter": 3,
-			"lunch": ["self.recette2", "self.recette4"],
-			"dessert": [self.listBadWords]
-		}"""
+			test = self.italianBook.get_recipe_by_name(self.simpleInt)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.negativeSimpleInt)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.intOutOfRange)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.negativeIntOutOfRange)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.emptyString)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.nonEmptyString)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.noParameter)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.falseTest)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.trueTest)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipe_by_name(self.emptyList)
+
+	def testWrongGetRecipeByTypes(self):
+		"""Test trying to use not correctly the method get_recipe_by_type in Book"""
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.simpleInt)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.negativeSimpleInt)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.intOutOfRange)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.negativeIntOutOfRange)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.emptyString)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.nonEmptyString)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.noParameter)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.falseTest)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.trueTest)
+		with self.assertRaises(SystemExit):
+			test = self.italianBook.get_recipes_by_types(self.emptyList)
+
+	def testWrongAddRecipe(self):
+		"""Test trying to use not correctly the method add_recipe in Book"""
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.simpleInt)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.negativeSimpleInt)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.intOutOfRange)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.negativeIntOutOfRange)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.emptyString)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.nonEmptyString)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.noParameter)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.falseTest)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.trueTest)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.emptyList)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(self.listBadWords)
+		with self.assertRaises(SystemExit):
+			self.italianBook.add_recipe(Recipe(6969, "trois", "6 minutes", 3, "", self.listOfRecipes))
 
 
 if __name__ == '__main__':
