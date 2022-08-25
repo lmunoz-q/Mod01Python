@@ -1,22 +1,33 @@
 import datetime
-
+import unittest
 from book import Book
 from recipe import Recipe
 
-recette1 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], "", "starter")
-recette2 = Recipe("bolognaise", 4, 200, ["meat", "onions", "celery", "carrots", "tomatoes"], "meat sauce", "lunch")
-recette3 = Recipe("tiramisu", 5, 30, ["coffee", "mascarpone", "sugar", "egg"], "italian dessert", "dessert")
-recette4 = Recipe("carbonara", 2, 10, ["pancetta", "egg", "pecorino", "pepper"], "creamy sauce", "lunch")
-# recetteFalse = Recipe("name", 0, 0, ["ingredient1", "2"], "", "dessert") Put here everything to test
 
-dico_test = {
-	"starter": recette1,
-	"lunch": recette2,
-	"dessert": recette3
-}
+class Test(unittest.TestCase):
+	def setUp(self) -> None:
+		"""Setup <Recipe>"""
+		self.recette1 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
+		self.recette2 = Recipe("bolognaise", 4, 200, ["meat", "onions", "celery", "carrots", "tomatoes"], "meat sauce", "lunch")
+		self.recette3 = Recipe("tiramisu", 5, 30, ["coffee", "mascarpone", "sugar", "egg"], "italian dessert", "dessert")
+		self.recette4 = Recipe("carbonara", 2, 10, ["pancetta", "egg", "pecorino", "pepper"], "creamy sauce", "lunch")
+		self.recetteToAdd = Recipe("panna cotta", 2, 20, ["milk", "gelatin", "sugar", "fruit"], "", "dessert")
+		"""Setup Dictionary for <Book>"""
+		self.listOfRecipes = {
+			"starter": [self.recette1],
+			"lunch": [self.recette2, self.recette4],
+			"dessert": [self.recette3]
+		}
 
-italian = Book("Italian recipes", datetime.datetime.now(), datetime.datetime.now(), dico_test)
-italian.add_recipe(recette4)
-print(italian)
+	def testCreationRecipe(self):
+		self.assertIsInstance(self.recette1, Recipe)
+		self.assertIsInstance(self.recette2, Recipe)
+		self.assertIsInstance(self.recette3, Recipe)
+		self.assertIsInstance(self.recette4, Recipe)
 
-# il manque unit test
+	def testWrongName(self):
+		""""""
+
+
+if __name__ == '__main__':
+	unittest.main()

@@ -17,8 +17,12 @@ class Book:
             self.creation_date = creation_date
             if not all(key in ["starter", "lunch", "dessert"] for key in recipe_list.keys()):
                 raise TypeError("error, the dictionary not contain ['starter', 'lunch', dessert] as a key value")
-            elif not all(isinstance(value, Recipe) for value in recipe_list.values()):
-                raise TypeError("error, the dictionary not contain 'values' as a <Recipe> type")
+            elif not all(isinstance(value, list) for value in recipe_list.values()):
+                raise TypeError("error, the dictionary not contain 'values' as a <list> type")
+            for value in recipe_list.values():
+                for rec in value:
+                    if not isinstance(rec, Recipe):
+                        raise TypeError("error, the <list> not contains <Recipe> in 'values'")
             self.recipe_list = recipe_list
         except TypeError as err:
             sys.exit(err)
@@ -29,9 +33,10 @@ class Book:
             if not isinstance(name, str):
                 raise TypeError("error, 'name' must be a <string>")
             for value in self.recipe_list.values():
-                if value.name == name:
-                    print(f"{name}")
-                    return value
+                for ret in value:
+                    if ret.name == name:
+                        print(f"{name}")
+                        return ret
             raise NameError(f"error, '{name}' can't be found")
         except TypeError as te:
             sys.exit(te)
@@ -47,7 +52,7 @@ class Book:
                 raise TypeError("error, recipe_type must be a 'starter', 'lunch' or 'dessert'")
             for key in self.recipe_list.keys():
                 if key == recipe_type:
-                    return self.recipe_list[recipe_type].name
+                    return self.recipe_list[recipe_type]
         except TypeError as te:
             sys.exit(te)
 
@@ -56,7 +61,7 @@ class Book:
         try:
             if not isinstance(recipe, Recipe):
                 raise TypeError("'recipe' need to be a <Recipe> type")
-            self.recipe_list.update({recipe.recipe_type: recipe})
+            self.recipe_list[recipe.recipe_type].append(recipe)
             self.last_update = datetime.datetime.now()
         except TypeError as te:
             sys.exit(te)

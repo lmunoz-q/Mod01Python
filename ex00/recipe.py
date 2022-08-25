@@ -33,4 +33,10 @@ class Recipe:
 		else:
 			txt = f"This is the recipe for '{self.name}'\nCooking lvl : {self.cooking_lvl}/5\nCooking time : {self.cooking_time} minutes\nIngredients : {self.ingredients}\nThis recipe is for {self.recipe_type}"
 		return txt
-# __repr__ si on veut afficher l'objet dans book.py
+
+	def __repr__(self):
+		"""Return the string to print with the recipe info"""
+		if self.description != "":
+			return f"This is the recipe for '{self.name}'\nCooking lvl : {self.cooking_lvl}/5\nCooking time : {self.cooking_time} minutes\nIngredients : {self.ingredients}\nDescription : {self.description}\nThis recipe is for {self.recipe_type}"
+		else:
+			return f"This is the recipe for '{self.name}'\nCooking lvl : {self.cooking_lvl}/5\nCooking time : {self.cooking_time} minutes\nIngredients : {self.ingredients}\nThis recipe is for {self.recipe_type}"
