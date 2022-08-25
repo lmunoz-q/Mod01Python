@@ -34,6 +34,7 @@ class Test(unittest.TestCase):
 		self.listBadWords = ["caca", "vomi", "crachat"]
 
 	def testCreationRecipe(self):
+		"""Test if Objs are instanced properly"""
 		self.assertIsInstance(self.recette1, Recipe)
 		self.assertIsInstance(self.recette2, Recipe)
 		self.assertIsInstance(self.recette3, Recipe)
