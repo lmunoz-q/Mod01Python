@@ -38,6 +38,7 @@ class Test(unittest.TestCase):
 		self.assertIsInstance(self.recette2, Recipe)
 		self.assertIsInstance(self.recette3, Recipe)
 		self.assertIsInstance(self.recette4, Recipe)
+		self.assertIsInstance(self.recetteToAdd, Recipe)
 		self.assertIsInstance(self.italianBook, Book)
 
 	def testWrongName(self):
