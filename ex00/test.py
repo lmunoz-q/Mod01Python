@@ -18,15 +18,38 @@ class Test(unittest.TestCase):
 			"lunch": [self.recette2, self.recette4],
 			"dessert": [self.recette3]
 		}
+		"""Setup <Book>"""
+		self.italianBook = Book("Recipes from Italia", datetime.datetime.now(), datetime.datetime.now(), self.listOfRecipes)
 
 	def testCreationRecipe(self):
 		self.assertIsInstance(self.recette1, Recipe)
 		self.assertIsInstance(self.recette2, Recipe)
 		self.assertIsInstance(self.recette3, Recipe)
 		self.assertIsInstance(self.recette4, Recipe)
+		self.assertIsInstance(self.italianBook, Book)
 
 	def testWrongName(self):
-		""""""
+		"""Test assigning type incorrect in Recipe.name"""
+		intTest = 42
+		emptyString = ""
+		nonEmptyString = "caca"
+		NoParameter = None
+		FalseTest = False
+		TrueTest = True
+
+		with self.assertRaises(SystemExit):
+			wrong1 = Recipe(intTest, 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
+		with self.assertRaises(SystemExit):
+			wrong2 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
+		with self.assertRaises(SystemExit):
+			wrong3 = Recipe(NoParameter, 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
+		with self.assertRaises(SystemExit):
+			wrong4 = Recipe(FalseTest, 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
+		with self.assertRaises(SystemExit):
+			wrong5 = Recipe(TrueTest, 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
+
+	def testWrongCookingLvl(self):
+		"""Test assigning type incorrect in Recipe.cooking_lvl"""
 
 
 if __name__ == '__main__':
