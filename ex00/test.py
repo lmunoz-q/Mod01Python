@@ -59,7 +59,7 @@ class Test(unittest.TestCase):
 			test6 = Recipe(self.negativeSimpleInt, 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
 
 	def testWrongCookingLvl(self):
-		"""Test assigning type incorrect in Recipe.cooking_lvl"""
+		"""Test assigning incorrect type in Recipe.cooking_lvl"""
 
 		with self.assertRaises(SystemExit):
 			test1 = Recipe("carpaccio", self.falseTest, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
@@ -77,7 +77,7 @@ class Test(unittest.TestCase):
 			test6 = Recipe("carpaccio", self.intOutOfRange, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
 
 	def testWrongCookingTime(self):
-		"""Test assigning type incorrect in Recipe.cooking_time"""
+		"""Test assigning incorrect type in Recipe.cooking_time"""
 		with self.assertRaises(SystemExit):
 			test1 = Recipe("carpaccio", 1, self.falseTest, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
 		with self.assertRaises(SystemExit):
@@ -94,7 +94,7 @@ class Test(unittest.TestCase):
 			test6 = Recipe("carpaccio", 1, self.falseTest, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", "starter")
 
 	def testWrongIngredients(self):
-		"""Test assigning type incorrect in Recipe.ingredients"""
+		"""Test assigning incorrect type in Recipe.ingredients"""
 		with self.assertRaises(SystemExit):
 			test1 = Recipe("carpaccio", 1, 5, self.simpleInt, "meat thinly sliced, and served raw", "starter")
 		with self.assertRaises(SystemExit):
@@ -117,7 +117,7 @@ class Test(unittest.TestCase):
 			test10 = Recipe("carpaccio", 1, 5, self.emptyList, "meat thinly sliced, and served raw", "starter")
 
 	def testWrongDescription(self):
-		"""Test assigning type incorrect in Recipe.description"""
+		"""Test assigning incorrect type in Recipe.description"""
 		with self.assertRaises(SystemExit):
 			test1 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], self.simpleInt, "starter")
 		with self.assertRaises(SystemExit):
@@ -134,6 +134,7 @@ class Test(unittest.TestCase):
 			test7 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], self.emptyList, "starter")
 
 	def testWrongRecipeType(self):
+		"""Test assigning incorrect type in Recipe.recipe_type"""
 		with self.assertRaises(SystemExit):
 			test1 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", self.simpleInt)
 		with self.assertRaises(SystemExit):
@@ -154,7 +155,8 @@ class Test(unittest.TestCase):
 			test9 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", self.trueTest)
 		with self.assertRaises(SystemExit):
 			test10 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", self.emptyList)
-
+		with self.assertRaises(SystemExit):
+			test11 = Recipe("carpaccio", 1, 5, ["meat", "vinegar", "parmesan"], "meat thinly sliced, and served raw", self.listBadWords)
 
 		"""self.simpleInt = 5
 		self.negativeSimpleInt = -5
