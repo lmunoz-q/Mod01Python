@@ -15,7 +15,9 @@ class Book:
             if not isinstance(creation_date, datetime.date):
                 raise TypeError("error, creation_date must be a datatime type")
             self.creation_date = creation_date
-            if not all(key in ["starter", "lunch", "dessert"] for key in recipe_list.keys()):
+            if not isinstance(recipe_list, dict):
+                raise TypeError("error, 'recipe_list' must be a <dict>")
+            elif not all(key in ["starter", "lunch", "dessert"] for key in recipe_list.keys()):
                 raise TypeError("error, the dictionary not contain ['starter', 'lunch', dessert] as a key value")
             elif not all(isinstance(value, list) for value in recipe_list.values()):
                 raise TypeError("error, the dictionary not contain 'values' as a <list> type")
